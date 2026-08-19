@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>BlackGlass - блок-пазл</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Главный экран -->
+        <div id="mainScreen">
+            <div class="header">
+                <div class="logo">BLACKGLASS</div>
+                <div class="stats">
+                    <div class="stat-item">
+                        <span class="stat-label">SCORE</span>
+                        <span class="stat-value" id="scoreDisplay">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">BEST</span>
+                        <span class="stat-value best" id="bestDisplay">0</span>
+                    </div>
+                </div>
+                <div class="action-buttons">
+                    <button class="icon-btn" id="settingsBtn">⚙</button>
+                    <button class="icon-btn" id="restartBtn">↻</button>
+                </div>
+            </div>
+
+            <!-- Игровое поле -->
+            <div id="gameContainer" class="glass-panel">
+                <div id="gridContainer">
+                    <canvas id="gameCanvas"></canvas>
+                </div>
+                <!-- Панель фигур -->
+                <div id="piecesContainer" class="pieces-panel">
+                    <div id="pieceSlots"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Стартовое меню -->
+        <div id="menuOverlay" class="overlay">
+            <div class="menu-content glass-panel">
+                <div class="menu-logo">BLACKGLASS</div>
+                <div class="menu-best">BEST: <span id="menuBest">0</span></div>
+                <button class="menu-btn primary" id="playBtn">PLAY</button>
+                <button class="menu-btn" id="menuSettingsBtn">Settings</button>
+                <button class="menu-btn" id="menuHowToBtn">How to Play</button>
+                <button class="menu-btn" id="menuStatsBtn">Statistics</button>
+            </div>
+        </div>
+
+        <!-- Окно Game Over -->
+        <div id="gameOverOverlay" class="overlay" style="display:none;">
+            <div class="gameover-content glass-panel">
+                <div class="gameover-title">GAME OVER</div>
+                <div id="newBestBadge" class="new-best-badge" style="display:none;">NEW BEST!</div>
+                <div class="gameover-score">SCORE: <span id="finalScore">0</span></div>
+                <div class="gameover-best">BEST: <span id="finalBest">0</span></div>
+                <button class="menu-btn primary" id="tryAgainBtn">TRY AGAIN</button>
+                <button class="menu-btn" id="gameoverMenuBtn">MAIN MENU</button>
+            </div>
+        </div>
+
+        <!-- Настройки -->
+        <div id="settingsOverlay" class="overlay" style="display:none;">
+            <div class="settings-content glass-panel">
+                <h2>SETTINGS</h2>
+                <div class="setting-row">
+                    <span>Sound</span>
+                    <label class="toggle"><input type="checkbox" id="soundToggle" checked><span class="slider"></span></label>
+                </div>
+                <div class="setting-row">
+                    <span>Music</span>
+                    <label class="toggle"><input type="checkbox" id="musicToggle" checked><span class="slider"></span></label>
+                </div>
+                <div class="setting-row">
+                    <span>Vibration</span>
+                    <label class="toggle"><input type="checkbox" id="vibrationToggle" checked><span class="slider"></span></label>
+                </div>
+                <div class="setting-row">
+                    <span>Animations</span>
+                    <label class="toggle"><input type="checkbox" id="animationsToggle" checked><span class="slider"></span></label>
+                </div>
+                <button class="menu-btn danger" id="resetProgressBtn">Reset Progress</button>
+                <button class="menu-btn" id="settingsCloseBtn">Close</button>
+            </div>
+        </div>
+
+        <!-- Статистика -->
+        <div id="statsOverlay" class="overlay" style="display:none;">
+            <div class="stats-content glass-panel">
+                <h2>STATISTICS</h2>
+                <div class="stats-grid">
+                    <div><span class="stat-label">Games Played</span><span id="statGames">0</span></div>
+                    <div><span class="stat-label">Best Score</span><span id="statBest">0</span></div>
+                    <div><span class="stat-label">Total Score</span><span id="statTotal">0</span></div>
+                    <div><span class="stat-label">Lines Cleared</span><span id="statLines">0</span></div>
+                    <div><span class="stat-label">Highest Combo</span><span id="statCombo">0</span></div>
+                </div>
+                <button class="menu-btn" id="statsCloseBtn">Close</button>
+            </div>
+        </div>
+
+        <!-- How to Play -->
+        <div id="howToOverlay" class="overlay" style="display:none;">
+            <div class="howto-content glass-panel">
+                <h2>HOW TO PLAY</h2>
+                <p>Drag and drop blocks onto the 8×8 grid.</p>
+                <p>Fill complete rows or columns to clear them and earn points.</p>
+                <p>Clear multiple lines at once for bonus points!</p>
+                <p>Game ends when no more blocks can be placed.</p>
+                <button class="menu-btn" id="howToCloseBtn">Got it!</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
